@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title> проект: Иоганнес Брамс — Великий композитор</title>
+    <style>
+        body {
+            font-family: "Times New Roman", Times, Georgia, serif;
+            background-color: #f4edd9;
+            color: #222222;
+            margin: 0;
+            padding: 15px;
+        }
+
+        #site-container {
+            width: 880px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            border: 3px double #7a2214;
+            box-shadow: 4px 4px 12px #999999;
+            padding: 0;
+        }
+
+        header {
+            background-color: #8b261b;
+            color: #ffebcd;
+            text-align: center;
+            padding: 25px 15px;
+            border-b: 3px solid #4a130b;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 32px;
+            text-shadow: 2px 2px 4px #333333;
+            letter-spacing: 1px;
+        }
+
+        header p {
+            margin: 8px 0 0 0;
+            font-style: italic;
+            font-size: 15px;
+            color: #f0e68c;
+        }
+
+        /* Student style navigation bar with prominent tabs */
+        nav {
+            background-color: #d2b48c;
+            padding: 8px 5px;
+            text-align: center;
+            border-bottom: 2px solid #8b261b;
+        }
+
+        nav button {
+            background-color: #fff8dc;
+            border: 2px solid #8b261b;
+            border-radius: 4px;
+            padding: 8px 14px;
+            margin: 2px 4px;
+            font-family: Georgia, serif;
+            font-size: 14px;
+            font-weight: bold;
+            color: #8b261b;
+            cursor: pointer;
+        }
+
+        nav button:hover {
+            background-color: #8b261b;
+            color: #ffffff;
+        }
+
+        nav button.active-tab {
+            background-color: #8b261b;
+            color: #ffffff;
+            border-color: #4a130b;
+            text-decoration: underline;
+        }
+
+        main {
+            padding: 25px;
+            min-height: 480px;
+            background-color: #fffcf5;
+        }
+
+        .tab-section {
+            display: none;
+        }
+
+        .tab-section.show {
+            display: block;
+        }
+
+        h2 {
+            color: #8b261b;
+            border-bottom: 2px solid #d2b48c;
+            padding-bottom: 6px;
+            font-size: 22px;
+            margin-top: 0;
+        }
+
+        h3 {
+            color: #4a130b;
+            font-size: 18px;
+            margin-top: 20px;
+            margin-bottom: 8px;
+        }
+
+        p {
+            line-height: 1.6;
+            margin-bottom: 14px;
+            font-size: 15px;
+            text-align: justify;
+        }
+
+        /* Image frame styles for student look */
+        .image-box {
+            border: 1px solid #999999;
+            padding: 6px;
+            background-color: #fcfbfa;
+            text-align: center;
+            font-size: 12px;
+            color: #555555;
+            margin: 10px;
+        }
+
+        .image-box img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto 5px auto;
+        }
+
+        .img-left {
+            float: left;
+            margin-left: 0;
+            margin-right: 18px;
+        }
+
+        .img-right {
+            float: right;
+            margin-right: 0;
+            margin-left: 18px;
+        }
+
+        .quote-box {
+            background-color: #f7f2e7;
+            border-left: 5px solid #8b261b;
+            padding: 12px 18px;
+            margin: 15px 0;
+            font-style: italic;
+            font-size: 14px;
+        }
+
+        /* Table formatting for poems & songs */
+        table.song-table {
+            width: 100%;
+            border-collapse: collapse;
+            border: 2px solid #8b261b;
+            margin: 15px 0;
+            font-size: 14px;
+        }
+
+        table.song-table th {
+            background-color: #d2b48c;
+            color: #4a130b;
+            padding: 8px;
+            border: 1px solid #8b261b;
+            text-align: left;
+        }
+
+        table.song-table td {
+            padding: 10px;
+            border: 1px solid #cccccc;
+            vertical-align: top;
+            line-height: 1.5;
+        }
+
+        /* Audio box styling */
+        .audio-item {
+            background-color: #f4edd9;
+            border: 1px solid #d2b48c;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 6px;
+        }
+
+        .audio-item h4 {
+            margin: 0 0 6px 0;
+            color: #8b261b;
+            font-size: 16px;
+        }
+
+        /* Fact lists */
+        ul.facts-list, ol.facts-list {
+            padding-left: 20px;
+            line-height: 1.7;
+            font-size: 15px;
+        }
+
+        ul.facts-list li, ol.facts-list li {
+            margin-bottom: 12px;
+        }
+
+        footer {
+            background-color: #d2b48c;
+            border-top: 2px solid #8b261b;
+            text-align: center;
+            padding: 12px;
+            font-size: 13px;
+            color: #333333;
+        }
+
+        .clear {
+            clear: both;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="site-container">
+        <header>
+            <h1>Иоганнес Брамс (1833–1897)</h1>
+            <p></p>
+        </header>
+
+        <nav>
+            <button onclick="changeTab('bio')" id="tabbtn-bio" class="active-tab">1. Подробная автобиография</button>
+            <button onclick="changeTab('works')" id="tabbtn-works">2. Сочинения, песни и стихи</button>
+            <button onclick="changeTab('audio')" id="tabbtn-audio">3. Аудиозаписи и слушание</button>
+            <button onclick="changeTab('facts')" id="tabbtn-facts">4. Интересные факты и истории</button>
+        </nav>
+
+        <main>
+            <!-- ================= TAB 1: AUTOBIOGRAPHY ================= -->
+            <div id="tab-bio" class="tab-section show">
+                <h2>Автобиография Иоганнеса Брамса</h2>
+
+                <div class="image-box img-right" style="width: 210px;">
+                    <img src="C:\Users\Asus\Desktop\pidor\brams1.jpg" alt="Брамс в зрелом возрасте" onerror="this.src='https://placehold.co/200x260/8b261b/ffffff?text=Брамс+в+зрелости'">
+                    <span>Иоганнес Брамс в зрелые годы (ок. 1893 г.)</span>
+                </div>
+
+                <p><b>Иоганнес Брамс</b> — выдающийся немецкий композитор, пианист и дирижер XIX века, один из ключевых представителей эпохи романтизма. Наряду с Иоганном Себастьяном Бахом и Людвигом ван Бетховеном он входит в так называемую великую тройку немецких композиторов, известную как «Три Б».</p>
+
+                <h3>Ранние годы и детство в Гамбурге</h3>
+                <p>Иоганнес родился 7 мая 1833 года в бедной семье в портовом городе Гамбурге. Его отец, Иоганн Якоб Брамс, был музыкантом-исполнителем на контрабасе и валторне, а мать, Кристина Ниссен, работала швеей. Семья жила скромно в южной части города.</p>
+                <p>Заметив у мальчика редкий музыкальный слух, отец с 7 лет отдал его обучению игре на фортепиано к учителю Отто Косселю. Чтобы помогать семье финансово, юному Иоганнесу уже с 12-13 лет приходилось вечерами и ночами играть на фортепиано в трактирах, портовых танцевальных залах и матросских кабачках. Несмотря на тяжелый труд, он находил время читать книги и изучать произведения Баха и Бетховена.</p>
+
+                <div class="image-box img-left" style="width: 180px;">
+                    <img src="C:\Users\Asus\Desktop\pidor\brams2.jpg" alt="Молодой Брамс" onerror="this.src='https://placehold.co/180x240/8b261b/ffffff?text=Молодой+Брамс'">
+                    <span>Молодой Брамс (1853 г., 20 лет)</span>
+                </div>
+
+                <h3>Встреча с Робертом и Кларой Шуман</h3>
+                <p>Переломным моментом в жизни Брамса стал 1853 год. Находясь в гастрольной поездке с венгерским скрипачом Эде Ременьи, Брамс познакомился с великим композитором Робертом Шуманом и его женой, гениальной пианисткой Кларой Шуман.</p>
+                <p>Шуман был поражен глубиной сочинений 20-летнего музыканта. Он написал историческую статью в Лейпцигской музыкальной газете под названием <i>«Новые пути»</i>, где объявил Брамса «избранником», которому суждено высказать идеальное выражение эпохи. Это принесло молодому автору мгновенную известность в профессиональных кругах.</p>
+                <p>Когда Роберт Шуман тяжело заболел, Брамс остался рядом с семейством Шуман, помогая Кларе ухаживать за детьми. Дружба и глубокая привязанность к Кларе Шуман сохранились у Брамса на всю оставшуюся жизнь.</p>
+
+                <div class="clear"></div>
+
+             
+
+                <h3>Венский период и мировая слава</h3>
+                <p>В 1862 году Брамс впервые приехал в Вену — музыкальную столицу Европы. Вена настолько очаровала его, что вскоре он переехал туда на постоянное жительство. Вене Брамс посвятил более 30 лет своей жизни.</p>
+                
+                <div class="image-box img-right" style="width: 220px;">
+                    <img src="C:\Users\Asus\Desktop\pidor\brams4.jpg">
+                    <span>Брамс в поздний период жизни (1891 г.)</span>
+                </div>
+
+                <p>Здесь он руководил венской Певческой академией, проводил концерты и активно сочинял. В отличие от многих современников-романтиков (Листа, Вагнера), стремившихся к реформам и новой программной музыке, Брамс сохранял верность традиционным строгим формам: симфониям, сонатам и квартетам.</p>
+                <p>Его Первую симфонию критики шутливо назвали «Десятой симфонией Бетховена» за мощь и монументальность. Всего он написал 4 симфонии, 2 фортепианных концерта, скрипичный концерт, масштабный «Немецкий реквием» и множество камерных ансамблей.</p>
+
+                <h3>Последние годы</h3>
+                <p>В последние годы жизни Брамс стал признанным классиком еще при жизни. Он получил почётные докторские степени нескольких университетов. Кончина Клары Шуман в мае 1896 года стала для него тяжелым ударом.</p>
+                <p>Спустя год, 3 апреля 1897 года, Иоганнес Брамс скончался в Вене от болезни печени в возрасте 63 лет. Он был похоронен на Центральном кладбище Вены рядом с Моцартом, Бетховеном и Шубертом.</p>
+            </div>
+
+            <!-- ================= TAB 2: WORKS & POEMS ================= -->
+            <div id="tab-works" class="tab-section">
+                <h2>Сочинения, поэзия и песни (Lieder)</h2>
+                <p>Творческое наследие Брамса охватывает практически все музыкальные жанры за исключением оперы. Особое место в его творчестве занимают <b>вокальные произведения (Lieder)</b> — песни и романсы для голоса с фортепиано. Он написал их около 200 единиц!</p>
+
+                <h3>Вокальное творчество и стихи</h3>
+                <p>Брамс очень тщательно подбирал поэтические тексты. Он обращался к стихотворениям Иоганна Вольфганга Гёте, Генриха Гейне, Людвига Тика, а также к немецкому и славянскому фольклору.</p>
+
+                <div class="image-box img-left" style="width: 200px;">
+                    <img src="C:\Users\Asus\Desktop\pidor\brams5.jpg" alt="Гравюра Брамса" onerror="this.src='https://placehold.co/200x250/8b261b/ffffff?text=Гравюра+Брамса'">
+                    <span>Историческая гравюра с изображением Брамса</span>
+                </div>
+
+                <!-- Song Table 1 -->
+                <h3>1. «Колыбельная» (Wiegenlied, Op. 49 № 4)</h3>
+                <p>Написана в 1868 году по случаю рождения второго ребенка у Берты Фабер — давней знакомой Брамса. Это одно из самых узнаваемых вокальных сочинений в истории музыки.</p>
+
+                <table class="song-table">
+                    <tr>
+                        <th style="width: 50%;">Оригинальный немецкий текст (Фольклор)</th>
+                        <th style="width: 50%;">Русский эквивалентный перевод</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            Guten Abend, gut' Nacht,<br>
+                            Mit Rosen bedacht,<br>
+                            Mit Näglein besteckt,<br>
+                            Schlüpf' unter die Deck'!<br>
+                            Morgen früh, wenn Gott will,<br>
+                            Wirst du wieder geweckt.
+                        </td>
+                        <td>
+                            Добрый вечер, ночь пришла,<br>
+                            Роза в саду расцвела.<br>
+                            Укрывайся скорей,<br>
+                            Спи под крышей своей.<br>
+                            Утром Бог нас пробудит,<br>
+                            И день новый наступит.
+                        </td>
+                    </tr>
+                </table>
+
+                <div class="clear"></div>
+
+                <!-- Song Table 2 -->
+                <h3>2. «Одиночество в поле» (Feldeinsamkeit, Op. 86 № 2)</h3>
+                <p>Песня на стихи Германа Аллерса, передающая состояние глубокого покойного созерцания природы и неба.</p>
+
+                <table class="song-table">
+                    <tr>
+                        <th style="width: 50%;">Оригинальный немецкий текст (Герман Аллерс)</th>
+                        <th style="width: 50%;">Русский перевод</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            Ich ruhe still im hohen grünen Gras<br>
+                            Und sehe lang' den blauen Himmel an,<br>
+                            Von trauten, schönen weißen Wolken durchzogen...<br>
+                            Mir ist, als ob ich längst gestorben bin.
+                        </td>
+                        <td>
+                            Лежу я тихо в высокой траве густой<br>
+                            И долго всматриваюсь в синий небосвод,<br>
+                            Где облака белые плывут вереницей...<br>
+                            И кажется мне, будто я давно покинул этот мир.
+                        </td>
+                    </tr>
+                </table>
+
+                <h3>Основные оркестровые и крупные произведения:</h3>
+                <ul class="facts-list">
+                    <li><b>Четыре Симфонии:</b> № 1 до минор (Op. 68), № 2 ре мажор (Op. 73), № 3 фа мажор (Op. 90), № 4 ми минор (Op. 98).</li>
+                    <li><b>Инструментальные концерты:</b> Два концерта для фортепиано с оркестром, Скрипичный концерт ре мажор, Двойной концерт для скрипки и виолончели.</li>
+                    <li><b>«Немецкий реквием» (Op. 45):</b> Величайшее хоровое произведение Брамса на немецкие тексты из Библии, посвященное памяти матери и Роберта Шумана.</li>
+                    <li><b>«Венгерские танцы»:</b> Цикл из 21 венгерской танцевальной мелодии, сделавший Брамса невероятно популярным при жизни.</li>
+                </ul>
+            </div>
+
+            <!-- ================= TAB 3: AUDIO RECORDINGS ================= -->
+            <div id="tab-audio" class="tab-section">
+                <h2>Аудиозаписи произведения Иоганнеса Брамса</h2>
+                <p>На этой странице вы можете послушать аудиоклипы наиболее известных музыкальных произведений композитора. Нажмите на кнопки проигрывателя ниже:</p>
+
+                <div class="image-box img-right" style="width: 220px;">
+                    <img src="C:\Users\Asus\Desktop\pidor\brams6.jpg" alt="Дом Брамса" onerror="this.src='https://placehold.co/220x160/8b261b/ffffff?text=Дом-музей+Брамса'">
+                    <span>Дом Брамса в Баден-Бадене, где он сочинял музыку</span>
+                </div>
+
+                <div class="audio-item">
+                    <h4>1. Венгерский танец № 1 соль минор (Оркестровая версия)</h4>
+                    <p>Знаменитый танец с характерными перепадами темпа и зажигательным цыганским ритмом.</p>
+                    <audio controls style="width: 100%;">
+                        <source src="C:\Users\Asus\Desktop\pidor\broms1.mp3" type="audio/ogg">
+                        Ваш браузер не поддерживает встроенный плеер.
+                    </audio>
+                </div>
+
+                <div class="audio-item">
+                    <h4>2. Колыбельная песня (Wiegenlied, Op. 49 № 4)</h4>
+                    <p>Нежная мелодия в исполнении классической музыкальной шкатулки.</p>
+                    <audio controls style="width: 100%;">
+                        <source src="C:\Users\Asus\Desktop\pidor\broms2.mp3" type="audio/ogg">
+                        Ваш браузер не поддерживает встроенный плеер.
+                    </audio>
+                </div>
+
+                <div class="audio-item">
+                    <h4>3. Венгерский танец № 5 фа-диез минор</h4>
+                    <p>Пожалуй, самый известный танец из всего цикла, широко используемый в кино и концертах.</p>
+                    <audio controls style="width: 100%;">
+                        <source src="C:\Users\Asus\Desktop\pidor\broms3.mp3" type="audio/ogg">
+                        Ваш браузер не поддерживает встроенный плеер.
+                    </audio>
+                </div>
+<h4>  Рассказ про Иоганнес Брамса </h4>
+                <div class="clear"></div>
+                <div class="quote-box">
+                    <video controls width="600">
+    <source src="C:\Users\Asus\Desktop\pidor\bros1.mp4" type="video/mp4">
+    Ваш браузер не поддерживает тег video.
+<p> Рассказ про Иоганнес Брамса </p>
+</video>                </div>
+            </div>
+
+            <!-- ================= TAB 4: INTERESTING FACTS ================= -->
+            <div id="tab-facts" class="tab-section">
+                <h2>Интересные факты и исторические эпизоды</h2>
+                <p>Жизнь Иоганнеса Брамса была полна интересных особенностей, курьезов и трогательных историй:</p>
+
+                <div class="image-box img-left" style="width: 200px;">
+                    <img src="C:\Users\Asus\Desktop\pidor\brams7.jpg" alt="Брамс за пианино" onerror="this.src='https://placehold.co/200x250/8b261b/ffffff?text=Брамс+портрет'">
+<span>Фотопортрет Брамса зрелых лет</span>
+</div>
+<ul class="facts-list">
+<li><b>Страсть к ходьбе пешком:</b> Брамс обожал длительные пешие прогулки на природе. Во время ходьбы он всегда держал руки за спиной и часто напевал себе под нос новые темы для симфоний.</li>
+                    <li><b>Строгий перфекционизм:</b> Брамс уничтожал всё, что считал несовершенным. По оценкам исследователей, он сожги сожженными до 20 струнных квартетов, прежде чем решился опубликовать Первый квартет!</li>
+                    <li><b>Любовь к крепкому кофе и сигарам:</b> Композитор был заядлым кофеманом. Он вставал очень рано (около 5 утра) и сам варил себе крепчайший кофе по собственному рецепту.</li>
+                    <li><b>Музыкальная дуэль эпохи:</b> В XIX веке музыкальный мир Германии разделился на два лагеря: поклонников «прогрессивной» музыки Листа и Вагнера и сторонников Брамса, отстаивавшего классическую гармонию. Сам Брамс избегал публичных ссор, но Вагнера недолюбливал.</li>
+                    <li><b>Привычка угощать детей:</b> Несмотря на суровый внешний вид и пышную бороду, Брамс был очень добрым человеком. В его карманах всегда находились конфеты и мятные леденцы, которые он раздавал ветишкам на улицах Вены.</li>
+                    <li><b>Холостяцкая жизнь:</b> Брамс никогда не был женат. Хотя в юности он был влюблен в Агату фон Зибольд и питал глубокие чувства к Кларе Шуман, он предпочёл посвятить себя полностью служению искусству.</li>
+                    <li><b>Острый язык:</b> Уходя с одной из пышных светских вечеринок, Брамс бросил знаменитую фразу: <i>«Если в этом зале остался кто-то, кого я сегодня забыл обидеть, прошу меня извинить!»</i></li>
+</ul>
+<div class="clear"></div>
+</div>
+</main>
+
+
+</div>
+
+<script>
+// Simple tab switching JavaScript code suitable for beginner HTML projects
+function changeTab(tabName) {
+// Hide all tab sections
+var sections = document.getElementsByClassName('tab-section');
+for (var i = 0; i < sections.length; i++) {
+                sections[i].classList.remove('show');
+            }
+
+            // Remove active style from all nav buttons
+            var buttons = document.querySelectorAll('nav button');
+            for (var j = 0; j < buttons.length; j++) {
+                buttons[j].classList.remove('active-tab');
+            }
+
+            // Show current chosen section
+            var targetSection = document.getElementById('tab-' + tabName);
+            if (targetSection) {
+                targetSection.classList.add('show');
+            }
+
+            // Highlight current button
+            var targetBtn = document.getElementById('tabbtn-' + tabName);
+            if (targetBtn) {
+                targetBtn.classList.add('active-tab');
+            }
+        }
+    </script>
+</body>
+</html>
